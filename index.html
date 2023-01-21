@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <script>
+        var app = document.getElementsByTagName("BODY")[0];
+        if (localStorage.lightMode == "dark") {
+            app.setAttribute("light-mode", "dark");
+        }
+    </script>
+
+    <div class="container">
+      <div class="wrapper first">
+        <div class="details item-1">
+          <label for="text-field">Text Field</label>
+          <input type="text" id="text-field" placeholder="Input Text" />
+        </div>
+        <div class="details item-2">
+          <label for="select-field">Select Field</label>
+          <select name="select-field" id="select-field">
+            <option value="Human">Human Human Fruit</option>
+            <option value="Tremor">Tremor TremorFruit</option>
+            <option value="Op">Op Op Fruit</option>
+            <option value="Dark">Dark Dark Fruit</option>
+          </select>
+        </div>
+        <div class="details item-3">
+          <label for="text-area">Text Area</label>
+          <input type="textarea" id="text-area" placeholder="Text Area" />
+        </div>
+
+        <div class="details item-4">
+          <div class="multibox">
+            <label for="add-ons">Text Field with Add-ons</label>
+            <div class="multi">
+              <label for="multi-box">Label</label>
+              <input type="text" id="multi-box" placeholder="Input Text" />
+              <button>Button</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper second">
+        <input type="search" placeholder="Search" />
+        <div class="inc-dec">
+          <span class="minus">-</span>
+          <span class="num">01</span>
+          <span class="plus">+</span>
+        </div>
+
+        <div class="check">
+          <input type="checkbox" id="check" />
+          <label for="check">Checkbox</label>
+        </div>
+        <div class="radio-btn">
+          <input type="radio" id="radio-btn" />
+          <label for="radio-btn">Radio Button</label>
+        </div>
+        <div class="toggle">
+          <!-- <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label> -->
+
+          <button
+            class="light-mode-button"
+            aria-label="Toggle Light Mode"
+            onclick="toggle_light_mode()"
+          >
+            <span></span>
+            <span></span>
+          </button>
+          <div class="switch-label">
+          <label for="btn">Switch</label>
+        </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const minus = document.querySelector(".minus"),
+        plus = document.querySelector(".plus"),
+        num = document.querySelector(".num");
+
+      let a = 1;
+      plus.addEventListener("click", () => {
+        a++;
+        a = a < 10 ? "0" + a : a;
+        num.innerText = a;
+        console.log(a);
+      });
+
+      minus.addEventListener("click", () => {
+        if (a > 1) {
+          a--;
+          a = a < 10 ? "0" + a : a;
+          num.innerText = a;
+        }
+      });
+
+
+      function toggle_light_mode() {
+            var app = document.getElementsByTagName("BODY")[0];
+            if (localStorage.lightMode == "dark") {
+                localStorage.lightMode = "light";
+                app.setAttribute("light-mode", "light");
+            } else {
+                localStorage.lightMode = "dark";
+                app.setAttribute("light-mode", "dark");
+            }       
+        }
+
+		window.addEventListener("storage", function () {
+			if (localStorage.lightMode == "dark") {
+				app.setAttribute("light-mode", "dark");
+			} else {
+				app.setAttribute("light-mode", "light");
+			}
+		}, false);
+    </script>
+  </body>
+</html>
